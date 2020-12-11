@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "492165405141",
+    "project_id": "beyondfilm-481db",
+    "storage_bucket": "beyondfilm-481db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492165405141:android:de5da2d5cb0337a954055c",
+        "android_client_info": {
+          "package_name": "com.wynneplaga.beyondfilm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492165405141-cl4k59fuv4upuo87v789cjc2i11192cp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAVSxsJT5rCYZ4vDxyqMSnO0BK_etNNDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492165405141-cl4k59fuv4upuo87v789cjc2i11192cp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

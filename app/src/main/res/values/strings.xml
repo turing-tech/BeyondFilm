@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BeyondFilm</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="log_out">Log out</string>
+    <string name="about">About</string>
+</resources>

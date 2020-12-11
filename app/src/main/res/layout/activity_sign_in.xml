@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignInActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="175dp"
+        android:layout_height="125dp"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1">
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/topText"
+                android:text="Beyond"
+                android:alpha="0"
+                tools:alpha="1"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:fontFamily="@font/staatliches_regular"
+                android:textSize="40sp"
+                android:translationX="-5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/bottomText"
+                android:text="Film"
+                android:alpha="0"
+                tools:alpha="1"
+                android:layout_below="@id/topText"
+                android:layout_marginTop="-10dp"
+                android:translationX="25dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:fontFamily="@font/staatliches_regular"
+                android:textSize="40sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/welcomeImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@mipmap/welcome" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:alpha="0"
+            tools:alpha="1"
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:translationY="20dp"
+            android:layout_alignParentBottom="true"
+            app:cardCornerRadius="20dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/signInButton"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="25dp"
+                app:cardBackgroundColor="#4285F4"
+                app:cardElevation="3dp"
+                android:clickable="true"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/google_logo"
+                        app:srcCompat="@drawable/ic_google_logo"
+                        android:background="@color/white"
+                        android:padding="12dp"
+                        android:scaleType="fitStart"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_toRightOf="@id/google_logo"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:text="Sign in with Google"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
