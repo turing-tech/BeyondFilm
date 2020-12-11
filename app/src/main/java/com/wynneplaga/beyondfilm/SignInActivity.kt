@@ -1,12 +1,12 @@
 package com.wynneplaga.beyondfilm
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.OvershootInterpolator
-import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -69,48 +69,42 @@ class SignInActivity : BeyondFilmActivity() {
         startActivityForResult(client.signInIntent, requestId)
     }
 
+    @SuppressLint("Recycle")
     private fun launchInitialAnimations(binding: ActivitySignInBinding) = binding.materialCardView.onFirstLayout {
-        val cardAnimation = binding.materialCardView.let {
-            ObjectAnimator.ofFloat(it.translationY + it.height.toFloat(), it.translationY).apply {
-                addUpdateListener { anim ->
-                    it.translationY = anim.animatedValue as Float
-                }
-                doOnStart { _ -> it.alpha = 1f }
-                interpolator = OvershootInterpolator()
-                duration = 1000
-            }
-        }
-
-        val bottomTextAnimation = ObjectAnimator.ofFloat(
-                binding.bottomText.translationX - 10f.dpToPx(resources.displayMetrics),
-                binding.bottomText.translationX
-        ).apply {
-            addUpdateListener {
-                binding.bottomText.alpha = it.animatedFraction
-                binding.bottomText.translationX = it.animatedValue as Float
-            }
-            doOnEnd { cardAnimation.start() }
-            duration = 500
-        }
-
-        val topTextAnimation = ObjectAnimator.ofFloat(
-                binding.topText.translationX - 10f.dpToPx(resources.displayMetrics),
-                binding.topText.translationX
-        ).apply {
-            addUpdateListener {
-                binding.topText.alpha = it.animatedFraction
-                binding.topText.translationX = it.animatedValue as Float
-            }
-            doOnEnd { bottomTextAnimation.start() }
-            duration = 500
-        }
-
-        ObjectAnimator.ofFloat(0f, 1f).apply {
-            addUpdateListener { binding.welcomeImage.alpha = it.animatedValue as Float }
-            doOnEnd { topTextAnimation.start() }
-            duration = 500
-            start()
-        }
+        AnimationSet(
+                ObjectAnimator.ofFloat(0f, 1f).apply {
+                    addUpdateListener { binding.welcomeImage.alpha = it.animatedValue as Float }
+                },
+                ObjectAnimator.ofFloat(
+                        binding.topText.translationX - 10f.dpToPx(resources.displayMetrics),
+                        binding.topText.translationX
+                ).apply {
+                    addUpdateListener {
+                        binding.topText.alpha = it.animatedFraction
+                        binding.topText.translationX = it.animatedValue as Float
+                    }
+                },
+                ObjectAnimator.ofFloat(
+                        binding.bottomText.translationX - 10f.dpToPx(resources.displayMetrics),
+                        binding.bottomText.translationX
+                ).apply {
+                    addUpdateListener {
+                        binding.bottomText.alpha = it.animatedFraction
+                        binding.bottomText.translationX = it.animatedValue as Float
+                    }
+                },
+                binding.materialCardView.let {
+                    ObjectAnimator.ofFloat(it.translationY + it.height.toFloat(), it.translationY).apply {
+                        addUpdateListener { anim ->
+                            it.translationY = anim.animatedValue as Float
+                        }
+                        doOnStart { _ -> it.alpha = 1f }
+                        interpolator = OvershootInterpolator()
+                        duration = 1000
+                    }
+                },
+                defaultDuration = 500
+        ).start()
     }
 
 }
